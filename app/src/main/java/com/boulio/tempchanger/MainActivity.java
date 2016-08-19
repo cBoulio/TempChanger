@@ -75,6 +75,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
+    @Override
+    protected void onResume() {
+        //get the saved values
+            fehString= SavedValues.getString("fehString","");
+
+
+        //calculate && display method
+        showTemp();
+
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause(){
+        //save the instance variables
+        SharedPreferences.Editor editor = SavedValues.edit();
+        editor.putString("fehString",fehString);
+        editor.apply();
+
+        super.onPause();
+    }
+
 
 }
 
